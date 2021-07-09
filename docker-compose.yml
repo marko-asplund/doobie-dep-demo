@@ -5,4 +5,9 @@ services:
     build: .
     volumes:
       - ./.:/build
-    entrypoint: /bin/bash
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+    - |
+      cd /build
+      sbt evicted > evicted.out
+      sbt dependencyTree > deptree.out
